@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.millky.booklog.domain.model.entity.Book;
-import com.millky.booklog.domain.model.repository.BookRepository;
+import com.millky.booklog.domain.repository.BookRepository;
 
 @Controller
 @RequestMapping("/book")

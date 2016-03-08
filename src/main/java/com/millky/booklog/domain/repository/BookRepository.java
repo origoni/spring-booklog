@@ -1,4 +1,4 @@
-package com.millky.booklog.domain.model.repository;
+package com.millky.booklog.domain.repository;
 
 import java.util.List;
 

@@ -1,9 +1,10 @@
-package com.millky.booklog.domain.model.repository.impl;
+package com.millky.booklog.domain.repository.impl;
 
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import com.millky.booklog.domain.repository.LibraryRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.millky.booklog.domain.model.dto.DaumBook;
 import com.millky.booklog.domain.model.entity.Book;
-import com.millky.booklog.domain.model.repository.LibraryRepository;
 import com.millky.booklog.infrastructure.client.DaumBookApiClient;
 
 import lombok.extern.slf4j.Slf4j;

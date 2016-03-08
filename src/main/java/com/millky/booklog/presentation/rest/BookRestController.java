@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.millky.booklog.domain.model.entity.Book;
-import com.millky.booklog.domain.model.repository.BookRepository;
-import com.millky.booklog.domain.model.repository.LibraryRepository;
+import com.millky.booklog.domain.repository.BookRepository;
+import com.millky.booklog.domain.repository.LibraryRepository;
 
 import lombok.extern.slf4j.Slf4j;
 

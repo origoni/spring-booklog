@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.millky.booklog.domain.model.entity.Quote;
-import com.millky.booklog.domain.model.repository.BookRepository;
+import com.millky.booklog.domain.repository.BookRepository;
 import com.millky.booklog.infrastructure.dao.QuoteDao;
 
 import lombok.extern.slf4j.Slf4j;
