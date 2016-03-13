@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.millky</groupId>
-	<artifactId>booklog</artifactId>
+	<artifactId>spring-booklog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>book-log</name>
+	<name>spring-booklog</name>
 	<description>On Spring BookLog</description>
 
 	<parent>

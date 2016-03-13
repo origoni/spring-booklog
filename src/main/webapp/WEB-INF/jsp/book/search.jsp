@@ -85,7 +85,7 @@
 
 				},
 				error : function(data, status) {
-					alert("error");
+					alert(data.responseJSON.message);
 				}
 			}).always(function() {
 				//alert("ok");

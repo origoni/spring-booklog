@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.millky.booklog.domain.model.dto.DaumBook;
 import com.millky.booklog.domain.model.dto.DaumBook.Item;
+import com.millky.booklog.domain.model.exception.IllegalApiKeyException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,7 +37,12 @@ public class DaumBookApiClient {
 
 		log.info("requestUrl = {}", requestUrl);
 
-		DaumBook book = restTemplate.getForObject(requestUrl, DaumBook.class);
+		DaumBook book;
+		try {
+			book = restTemplate.getForObject(requestUrl, DaumBook.class);
+		} catch (HttpClientErrorException e) {
+			throw new IllegalApiKeyException("Daum search API key Not Found.");
+		}
 
 		return book.getChannel().getItem();
 	}
