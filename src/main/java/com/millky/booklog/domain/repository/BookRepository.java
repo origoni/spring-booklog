@@ -1,28 +1,30 @@
 package com.millky.booklog.domain.repository;
 
-import java.util.List;
-
+import com.millky.booklog.domain.model.entity.Book;
+import com.millky.booklog.infrastructure.dao.BookDao;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.millky.booklog.domain.model.entity.Book;
-import com.millky.booklog.infrastructure.dao.BookDao;
+import java.util.List;
 
 @Repository
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class BookRepository {
 
-	@Autowired
-	BookDao bookDao;
+    @NonNull
+    private final BookDao bookDao;
 
-	public List<Book> getBooks() {
-		return bookDao.findAll();
-	}
+    public List<Book> getBooks() {
+        return bookDao.findAll();
+    }
 
-	public Book addBook(Book book) {
-		return bookDao.save(book);
-	}
+    public Book addBook(Book book) {
+        return bookDao.save(book);
+    }
 
-	public void delBook(Book book) {
-		bookDao.delete(book);
-	}
+    public void delBook(Book book) {
+        bookDao.delete(book);
+    }
 }
