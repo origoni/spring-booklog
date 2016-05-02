@@ -22,9 +22,9 @@
 							alt="${book.title}"
 							style="max-height: 170px; overflow: hidden; padding-bottom: 10px;">
 						<div class="caption">
-							<h5>${book.title}</h5>
+							<h5>${book.title} (${book.isbn})</h5>
 							<p>${book.publishedDate}</p>
-							<p>${book.authors}/ ${book.publisher}</p>
+							<p>${book.authors} / ${book.publisher}</p>
 							<p>
 								<a href="#" class="btn btn-primary" role="button"
 									onclick="addBook('${book.isbn}');">찜하기</a>

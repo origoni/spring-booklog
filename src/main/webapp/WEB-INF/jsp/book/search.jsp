@@ -17,7 +17,7 @@
 
 		<form method="get" action="/api/v1/books/new">
 			<fieldset class="form-group">
-				<label for="formGroupTitle">Title</label> <input id="formGroupTitle"
+				<label for="formGroupTitle">검색어</label> <input id="formGroupTitle"
 					type="text" class="form-control" name="q" placeholder="Title input" />
 			</fieldset>
 
@@ -42,7 +42,7 @@
 		<img class="media-object" src="{{imageUrl}}" alt="{{title}}"
 				style="max-height: 170px; overflow: hidden; padding-bottom: 10px;">
 		<div class="caption">
-			<h5>{{title}}</h5>
+			<h5>{{title}} ({{isbn}})</h5>
 			<p>{{publishedDate}}</p>
 			<p>{{authors}} / {{publisher}}</p>
 			<p>
