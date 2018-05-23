@@ -1,49 +1,67 @@
 package com.millky.booklog.infrastructure.client;
 
-import java.util.List;
-
+import com.millky.booklog.domain.model.dto.DaumBook;
+import com.millky.booklog.domain.model.exception.IllegalApiKeyException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.millky.booklog.domain.model.dto.DaumBook;
-import com.millky.booklog.domain.model.dto.DaumBook.Item;
-import com.millky.booklog.domain.model.exception.IllegalApiKeyException;
-
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 @Slf4j
 @Component
 public class DaumBookApiClient {
 
-	@Value("${app.key.daum}")
-	private String DAUM_SEARCH_APIKEY;
+    @Autowired
+    RestTemplate restTemplate;
 
-	public List<Item> getDaumBooks(String q, boolean isbn) {
+    @Value("${app.key.daum}")
+    private String DAUM_SEARCH_APIKEY;
 
-		RestTemplate restTemplate = new RestTemplate();
+    public List<DaumBook.Document> getDaumBooks(String q, boolean isbn) {
 
-		String requestUrl = "https://apis.daum.net/search/book";
-		requestUrl += "?apikey=" + DAUM_SEARCH_APIKEY; // 발급된 키
-		requestUrl += "&q=" + q; // 검색어
-		requestUrl += "&result=" + "20"; // 출력될 결과수
-		// requestUrl += "&pageno=" + "1"; // 페이지 번호
-		requestUrl += "&output=json";
+        String requestUrl = "https://dapi.kakao.com/v2/search/book";
+        requestUrl += "?size=" + "30"; // 출력될 결과수
+        // requestUrl += "&page=" + "1"; // 페이지 번호
 
-		if (isbn) {
-			requestUrl += "&searchType=isbn";
-		}
+        if (isbn) {
+            requestUrl += "&target=isbn";
+        }
 
-		log.info("requestUrl = {}", requestUrl);
 
-		DaumBook book;
-		try {
-			book = restTemplate.getForObject(requestUrl, DaumBook.class);
-		} catch (HttpClientErrorException e) {
-			throw new IllegalApiKeyException("Daum search API key Not Found.");
-		}
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.add("Authorization", "KakaoAK " + DAUM_SEARCH_APIKEY);
 
-		return book.getChannel().getItem();
-	}
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        map.add("query", q);
+
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+
+        log.info("headers = {}", headers);
+
+
+        log.info("requestUrl = {}", requestUrl);
+        log.info("entity = {}", request);
+
+        DaumBook book;
+        try {
+            book = restTemplate.postForObject(requestUrl, request, DaumBook.class);
+        } catch (HttpClientErrorException e) {
+            e.printStackTrace();
+            throw new IllegalApiKeyException("Daum search API key Not Found.");
+        }
+
+        log.info("book = {}", book.getDocuments());
+
+        return book.getDocuments();
+    }
 }

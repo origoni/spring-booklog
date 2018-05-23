@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.0.0-alpha.2/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 <title>책 검색 및 추가</title>
 </head>
 <body>
@@ -29,8 +28,8 @@
 
 
 
-	<script src="/webjars/jquery/3.0.0-beta1/dist/jquery.min.js"></script>
-	<script src="/webjars/mustache/2.2.1/mustache.min.js"></script>
+	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+	<script src="/webjars/mustachejs/2.2.1/mustache.min.js"></script>
 
 	<script id="template" type="x-tmpl-mustache">
 {{#.}}
@@ -39,11 +38,11 @@
 		style="padding: 15px; border-radius: 2px; border: 0;
 				-webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-		<img class="media-object" src="{{imageUrl}}" alt="{{title}}"
+		<img class="media-object" src="{{image_url}}" alt="{{title}}"
 				style="max-height: 170px; overflow: hidden; padding-bottom: 10px;">
 		<div class="caption">
 			<h5>{{title}} ({{isbn}})</h5>
-			<p>{{publishedDate}}</p>
+			<p>{{published_date}}</p>
 			<p>{{authors}} / {{publisher}}</p>
 			<p>
 				<a href="#" class="btn btn-primary" role="button" onclick="addBook({{isbn}})">추가하기</a>

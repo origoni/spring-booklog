@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.0.0-alpha.2/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 <title>기억에 남는 구절 목록</title>
 </head>
 <body>

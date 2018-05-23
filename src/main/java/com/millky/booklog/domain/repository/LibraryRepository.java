@@ -1,12 +1,12 @@
 package com.millky.booklog.domain.repository;
 
-import java.util.List;
-
 import com.millky.booklog.domain.model.entity.Book;
+
+import java.util.List;
 
 public interface LibraryRepository {
 
-	public List<Book> findBooksFromLibrary(String q);
+    List<Book> findBooksFromLibrary(String q);
 
-	public Book findBookByIsbn(String isbn);
+    Book findBookByIsbn(String isbn);
 }

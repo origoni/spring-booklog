@@ -13,6 +13,12 @@ spring:
       enabled: true
   datasource:
     url: jdbc:h2:file:./spring-booklog
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+    time-zone : Asia/Seoul
+    property-naming-strategy: SNAKE_CASE
 logging:
   level:
     com.millky.booklog: TRACE
@@ -24,8 +30,8 @@ server:
 
 app:
   key:
-    daum: 
-    google: 
+    daum:
+    google:
   impl:
     book: daumLibraryRepository
 #    book: googleLibraryRepository
