@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.0.0-alpha.2/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 <title>books</title>
 </head>
 <body>
@@ -25,10 +24,10 @@
 							<h5>${book.title} (${book.isbn})</h5>
 							<p>${book.publishedDate}</p>
 							<p>${book.authors} / ${book.publisher}</p>
-							<p>
-								<a href="#" class="btn btn-primary" role="button"
-									onclick="addBook('${book.isbn}');">찜하기</a>
-							</p>
+							<%--<p>--%>
+								<%--<a href="#" class="btn btn-primary" role="button"--%>
+									<%--onclick="addBook('${book.isbn}');">찜하기</a>--%>
+							<%--</p>--%>
 						</div>
 					</div>
 				</div>
