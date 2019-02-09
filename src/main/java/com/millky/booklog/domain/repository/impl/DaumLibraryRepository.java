@@ -27,7 +27,10 @@ public class DaumLibraryRepository implements LibraryRepository {
                 return null;
             }
 
-            if (t.getIsbn().length() > 15 && t.getIsbn().contains(" ")) { // 기존 kakao 책 API에서 11, 13 같이 올때가 있었던듯...?
+            // https://developers.kakao.com/docs/restapi/search#책-검색
+            // isbn	국제 표준 도서번호(ISBN10 ISBN13) (ISBN10,ISBN13 중 하나 이상 존재하며, ' '(공백)을 구분자로 출력됩니다) ex: "8996991341 9788996991342"
+            // " 9788996991342" <- 이런식으로 오는 경우가 있음
+            if (t.getIsbn().length() > 15 && t.getIsbn().contains(" ")) {
                 book.setIsbn(Long.parseLong(t.getIsbn().substring(11)));
             } else {
                 book.setIsbn(Long.parseLong(t.getIsbn().trim()));
