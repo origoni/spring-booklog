@@ -28,7 +28,7 @@ public class DaumBookApiClient {
 
     public List<DaumBook.Document> getDaumBooks(String q, boolean isbn) {
 
-        String requestUrl = "https://dapi.kakao.com/v2/search/book";
+        String requestUrl = "https://dapi.kakao.com/v3/search/book";
         requestUrl += "?size=" + "30"; // 출력될 결과수
         // requestUrl += "&page=" + "1"; // 페이지 번호
 

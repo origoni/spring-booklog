@@ -32,6 +32,3 @@ app:
   key:
     daum:
     google:
-  impl:
-    book: daumLibraryRepository
-#    book: googleLibraryRepository

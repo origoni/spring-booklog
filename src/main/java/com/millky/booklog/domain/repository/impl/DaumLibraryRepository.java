@@ -13,7 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Slf4j
-@Repository
+@Repository("kakaoLibraryRepository")
 public class DaumLibraryRepository implements LibraryRepository {
 
     @Autowired
@@ -27,10 +27,10 @@ public class DaumLibraryRepository implements LibraryRepository {
                 return null;
             }
 
-            if (t.getIsbn().contains(" ")) {
+            if (t.getIsbn().length() > 15 && t.getIsbn().contains(" ")) { // 기존 kakao 책 API에서 11, 13 같이 올때가 있었던듯...?
                 book.setIsbn(Long.parseLong(t.getIsbn().substring(11)));
             } else {
-                book.setIsbn(Long.parseLong(t.getIsbn()));
+                book.setIsbn(Long.parseLong(t.getIsbn().trim()));
             }
 
             book.setTitle(t.getTitle());

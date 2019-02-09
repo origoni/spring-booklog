@@ -2,6 +2,7 @@ package com.millky.booklog.presentation.web;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,9 +43,9 @@ public class QuoteController {
 	@RequestMapping("/{id}")
 	public String view(Model model, @PathVariable int id) {
 		log.info("id = {}", id);
-		Quote quote = quoteDao.findOne(id); // ⑤
+		Optional<Quote> quote = quoteDao.findById(id); // ⑤
 		log.info("quote = {}", quote);
-		model.addAttribute("quote", quote);
+		model.addAttribute("quote", quote.get());
 		return "quote/quote";
 	}
 
@@ -57,9 +58,9 @@ public class QuoteController {
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
 	public String editor(Model model, @PathVariable int id) {
-		Quote quote = quoteDao.findOne(id);
+		Optional<Quote> quote = quoteDao.findById(id);
 		model.addAttribute("bookList", bookRepository.getBooks());
-		model.addAttribute("quote", quote);
+		model.addAttribute("quote", quote.get());
 		return "quote/form"; // ③
 	}
 
@@ -70,7 +71,7 @@ public class QuoteController {
 
 	@RequestMapping("/{id}/delete")
 	public String delete(@PathVariable int id) {
-		quoteDao.delete(id);
+		quoteDao.deleteById(id);
 		return "redirect:/quote/list";
 	}
 }
