@@ -16,6 +16,9 @@
 ```
 git clone https://github.com/origoni/spring-booklog.git
 cd spring-booklog
+
+# src/main/resources/application.yml 파일 오픈API 키 입력
+
 mvn spring-boot:run
 ```
 
